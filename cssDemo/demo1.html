@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css实现音频波</title>
+	<style type="text/css">
+		#preloader_1 {
+			position: relative;
+			margin-top: 50px;
+		}
+		#preloader_1 span {
+			display: block;
+			bottom: 0px;
+			width: 9px;
+			height: 5px;
+			background: #9b59b6;
+			position: absolute;
+			animation: preloader_1 1.5s infinite ease-in-out;
+		}
+
+		@keyframes preloader_1 {
+			0%
+			{
+				height: 5px;
+				transform: translateY(0px);
+				background: #9b59b6;
+			}
+			25%
+			{
+				height: 30px;
+				transform: translateY(15px);
+				background: #3498db;
+			}
+			50%
+			{
+				height: 5px;
+				transform: translateY(0px);
+				background: #9b59b6;
+			}
+			100%
+			{
+				height: 5px;
+				transform: translateY(0px);
+				background: #9b59b6;
+			}
+		}
+
+		/*墨西哥波效果是通过为每个span添加animation-delay属性延迟2毫秒实现的。每个span通过nth-child()选择器进行定位*/
+		#preloader_1 span:nth-child(2) {
+			left: 11px;
+			animation-delay: .2s;
+		}
+
+		#preloader_1 span:nth-child(3) {
+			left: 22px;
+			animation-delay: .4s;
+		}
+
+		#preloader_1 span:nth-child(4) {
+			left: 33px;
+			animation-delay: .6s;
+		}
+
+		#preloader_1 span:nth-child(5) {
+			left: 44px;
+			animation-delay: .8s;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="preloader_1">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	</div>
+</body>
+</html>

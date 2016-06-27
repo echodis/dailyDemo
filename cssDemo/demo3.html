@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>贴吧音频播放</title>
+	<style type="text/css">
+		* {
+			box-sizing: content-box; /*什么意思*/
+		}
+		a {
+			text-decoration: none;
+		}
+		.voice_player {
+			width:200px;
+			/*:before, :after {
+				box-sizing: content-box;
+			}
+			border : 1px solid black;*/
+		}
+		a.voice_player_inner{
+			font-family: Arial;
+		    color: #303133;
+		    display: inline-block;
+		    overflow: hidden;
+		    font-size: 14px;
+		}
+		
+		a.voice_player_inner .before {
+			display: block;
+			float: left;
+			width: 7px;
+			background: url(http://tb2.bdstatic.com/tb/static-pcommon/img/voice/voice_player_bg_8ae9dfa.png) no-repeat 0px -30px;
+		}
+		a.voice_player_inner .middle {
+			float: left;
+			background: url(http://tb2.bdstatic.com/tb/static-pcommon/img/voice/voice_player_bg_8ae9dfa.png) no-repeat -7px -30px;
+		}
+
+		.voice_player span {
+		    cursor: pointer;
+		    display: inline-block;
+		    height: 30px;
+		    line-height: 30px;
+		}
+		
+		.voice_player .speaker {
+			display: block;
+			float: left;
+			width: 20px;
+			background: url(http://tb2.bdstatic.com/tb/static-pcommon/img/voice/voice_player_bg_8ae9dfa.png) -58px -202px no-repeat;
+			/*background-image: url(http://tb2.bdstatic.com/tb/static-pcommon/img/voice/voice_player_bg_ie_31b286b.gif);*/
+		}
+
+		.voice_player .time {
+			/*position: realtive;
+			border: 1px solid blue;*/
+			text-align: right;
+		}
+		.voice_player .time:after {
+			content: "\"";
+			
+		}
+		.voice_player .second {
+			cursor: pointer;
+			display: inline-block;
+			height: 30px;
+			line-height: 30px;
+		}
+
+		a.voice_player_inner .after {
+			width: 7px;
+			float: left;
+			background: url(http://tb2.bdstatic.com/tb/static-pcommon/img/voice/voice_player_bg_8ae9dfa.png) no-repeat -150px -30px;
+		}
+		.speaker_animate {
+			animation-delay: .2s;
+		}
+		/*定义动画实现播放*/
+		/*因效果差放弃，css适合垂直方向上有动态效果以及圆形转圈效果*/
+		@keyframes move
+		{
+			0% {
+				background-position: -1px -202px;
+			}
+			25% {
+				background-position: -20px -202px;
+			}
+			75% {
+				background-position: -39px -202px;
+			}
+			100% {
+				background-position: -58px -202px;
+			}
+		}
+
+	</style>
+
+</head>
+<body>
+	<div class="voice_player">
+		<a href="#" class="voice_player_inner">
+			<span class="before">&nbsp;</span>
+			<span class="middle">
+				<span class="speaker speaker_animate">&nbsp;</span>
+				<span class="time" style="width: 125px;">
+					<span class="second">23</span>
+				</span>
+			</span>
+			<span class="after">&nbsp;</span>
+		</a>
+	</div>
+	<script type="text/javascript">
+		var voice = document.getElementsByClassName('speaker')[0];
+		
+		function animation() {
+			var x = voice.style.backgroundPositionX.slice(0,-2);
+
+			voice.style.backgroundPositionX = (x>-58) ? ((x-19)+'px') : (-1+'px');
+
+			setTimeout(animation,500);
+		}
+
+		function speakerAnimation(voice) {
+			var speak = setTimeout(animation,500);
+		}
+		voice.onclick = function() {
+			voice.style.backgroundPositionX = -1 + 'px';
+			speakerAnimation(voice);
+		}
+	</script>
+</body>
+</html>

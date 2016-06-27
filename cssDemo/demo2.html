@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.myMusic {
+			display: block;
+			width: 55px;
+			height: 55px;
+			border-radius: 100%;
+			position: relative;
+		}
+		.myMusic:after {
+			display: block;
+			content: '\f001';
+			width: 55px;
+			height: 55px;
+			font-family: 'FontIcon';
+			text-align: center;
+			font-size: 25px;
+			line-height: 55px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.myMusic .circle {
+			display: block;
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+			border: 5px solid rgba(0,0,0,0);
+			border-top-color: #78dc1e;
+			border-bottom-color: #78dc1e;
+			position: absolute;
+			left: 0;
+			box-shadow: 0 0 35px #6ffe11;
+		}
+		.play {
+			-webkit-animation: Circle 1s ease-in-out infinite;
+			animation: Circle 1s ease-in-out infinite;
+		}
+
+		.pause {
+			-webkit-animation-play-state: paused;
+			-animation-play-state: paused;
+		}
+
+		@keyframes Circle {
+			from { -webkit-transform: rotate(0deg); }
+			to { -webkit-transform: rotate(360deg); }
+		}
+	</style>
+</head>
+<body>
+	<a class="myMusic" title="让我们荡起双桨">
+	    <span class="circle play"></span>
+	</a>
+</body>
+</html>
